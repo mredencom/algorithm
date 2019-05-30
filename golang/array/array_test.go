@@ -4,8 +4,8 @@ import "testing"
 
 //这里是一个测试array 文件的测试方法集
 
-//测试数组插入方法
-func TestInsert(t *testing.T) {
+//测试数组插入方法 go test -v -run TestArray_Insert -o array_test.go
+func TestArray_Insert(t *testing.T) {
 	capacity := 10
 	arr := NewArray(uint(capacity))
 	for i := 0; i < capacity-2; i++ {
@@ -16,14 +16,14 @@ func TestInsert(t *testing.T) {
 		}
 	}
 	arr.Print()
-	arr.Insert(uint(6), 999)
+	_ = arr.Insert(uint(6), 999)
 	arr.Print()
-	arr.InsertToTail(555)
+	_ = arr.InsertToTail(555)
 	arr.Print()
 }
 
-//测试删除方法
-func TestDelete(t *testing.T) {
+//测试删除方法 go test -v -run TestArray_Delete -o array_test.go
+func TestArray_Delete(t *testing.T) {
 	capacity := 10
 	arr := NewArray(uint(capacity))
 	for i := 0; i < capacity; i++ {
@@ -42,4 +42,20 @@ func TestDelete(t *testing.T) {
 		arr.Print()
 	}
 	arr.Print()
+}
+
+//测试 go test -v -run TestArray_Find -o array_test.go
+func TestArray_Find(t *testing.T) {
+	capacity := 10
+	arr := NewArray(uint(capacity))
+	for i := 0; i < capacity; i++ {
+		err := arr.Insert(uint(i), i+1)
+		if nil != err {
+			t.Fatal(err.Error())
+		}
+	}
+	arr.Print()
+	t.Log(arr.Find(0))
+	t.Log(arr.Find(9))
+	t.Log(arr.Find(11))
 }
