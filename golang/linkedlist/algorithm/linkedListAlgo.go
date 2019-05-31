@@ -29,7 +29,7 @@ func (this *LinkedList) Print() {
 
 //单链表反转
 //时间复杂度O(n)
-func (this *LinkedList) Reverse() {
+func (this *LinkedList) Reverse()  {
 	//判断链表的长度是否有两个节点 没有两个节点就不用反转了
 	if nil == this.head || nil == this.head.next || nil == this.head.next.next {
 		return
