@@ -1,4 +1,6 @@
-package main
+package binarytree
+
+import "fmt"
 
 // 二叉树
 // 定义一个节点的数据结构
@@ -69,6 +71,48 @@ func (tree *BinaryTree) SearchItem(i int) (*Node, bool) {
 	return nil, false
 }
 
+// 打印节点
+func (tree *BinaryTree) PrintItem(subtree *Node) {
+	if subtree.left != nil {
+		tree.PrintItem(subtree.left)
+	}
+	// 打印
+	fmt.Println(subtree.data)
+	if subtree.right != nil {
+		tree.PrintItem(subtree.right)
+	}
+}
 
-// 有序遍历
+// 中间 有序遍历
+func (tree *BinaryTree) InorderTraversal(subtree *Node, callback func(int)) {
+	if subtree.left != nil {
+		tree.InorderTraversal(subtree.left, callback)
+	}
+	// 打印
+	callback(subtree.data)
+	if subtree.right != nil {
+		tree.InorderTraversal(subtree.right, callback)
+	}
+}
 
+// 前序遍历
+func (tree *BinaryTree) PreorderTraversal(subtree *Node, callback func(int)) {
+	callback(subtree.data)
+	if subtree.left != nil {
+		tree.PreorderTraversal(subtree.left, callback)
+	}
+	if subtree.right != nil {
+		tree.PreorderTraversal(subtree.right, callback)
+	}
+}
+
+// 后续遍历
+func (tree *BinaryTree) PostorderTraversal(subtree *Node, callback func(int)) {
+	if subtree.left != nil {
+		tree.PostorderTraversal(subtree.left, callback)
+	}
+	if subtree.right != nil {
+		tree.PostorderTraversal(subtree.right, callback)
+	}
+	callback(subtree.data)
+}
