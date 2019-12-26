@@ -16,7 +16,7 @@ type HashTable struct {
 // 增加一个像hash table 增加一个值
 func (table *HashTable) Add(key string, i int) {
 	// 构建一个hash 值
-	position := generateHash(key)
+	position := GenerateHash(key)
 	current := table.data[position]
 	// 当前节点没有值 直接可以赋值
 	if current == nil {
@@ -32,7 +32,7 @@ func (table *HashTable) Add(key string, i int) {
 
 // 获取一个值
 func (table *HashTable) Get(key string) (int, bool) {
-	position := generateHash(key)
+	position := GenerateHash(key)
 	current := table.data[position]
 	// 循环找出和key 相同的的节点
 	for current != nil {
@@ -46,7 +46,7 @@ func (table *HashTable) Get(key string) (int, bool) {
 
 // 塞入一个值 set
 func (table *HashTable) Set(key string, value int) bool {
-	position := generateHash(key)
+	position := GenerateHash(key)
 	current := table.data[position]
 	for current != nil {
 		if current.key == key {
@@ -60,7 +60,7 @@ func (table *HashTable) Set(key string, value int) bool {
 
 // 删除一个值
 func (table *HashTable) Remove(key string) bool {
-	position := generateHash(key)
+	position := GenerateHash(key)
 	//  当数据不存在的时候 判断下返回false
 	if table.data[position] == nil {
 		return false
@@ -83,7 +83,7 @@ func (table *HashTable) Remove(key string) bool {
 }
 
 // 创建一个hash 值
-func generateHash(key string) uint8 {
+func GenerateHash(key string) uint8 {
 	hash := fnv.New32a()
 	_, _ = hash.Write([]byte(key))
 	return uint8(hash.Sum32() % 256)
