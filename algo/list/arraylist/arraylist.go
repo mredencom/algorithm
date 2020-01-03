@@ -141,7 +141,6 @@ func (list *List) Swap(i, j int) {
 
 // 插入数据
 func (list *List) Insert(index int, values ...interface{}) {
-
 	if !list.withInRange(index) {
 		// Append
 		if index == list.size {
