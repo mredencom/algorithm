@@ -10,25 +10,25 @@ import (
 )
 
 type TopMusic struct {
-	Status int `json:"status"`
-	CopyrightId int  `json:"copyrightId"`
-	Mvid int  `json:"mvid"`
-	CommentThreadId string `json:"commentThreadId"`
-	TransNames []string `json:"transNames"`
-	Score  float64  `json:"score"`
-	Fee  int `json:"fee"`
-	Ftype  int  `json:"ftype"`
-	No int  `json:"no"`
-	PublishTime int64 `json:"publishTime"`
-	Type int `json:"type"`
-	Duration int  `json:"duration"`
-	Alias  []string `json:"alias"`
-	Privilege  Privilege `json:"privilege"`
-	Djid int `json:"djid"`
-	Album  Album `json:"album"`
-	Name string `json:"name"`
-	Id int `json:"id"`
-	astRank int  `json:"lastRank"`
+	Status          int       `json:"status"`
+	CopyrightId     int       `json:"copyrightId"`
+	Mvid            int       `json:"mvid"`
+	CommentThreadId string    `json:"commentThreadId"`
+	TransNames      []string  `json:"transNames"`
+	Score           float64   `json:"score"`
+	Fee             int       `json:"fee"`
+	Ftype           int       `json:"ftype"`
+	No              int       `json:"no"`
+	PublishTime     int64     `json:"publishTime"`
+	Type            int       `json:"type"`
+	Duration        int       `json:"duration"`
+	Alias           []string  `json:"alias"`
+	Privilege       Privilege `json:"privilege"`
+	Djid            int       `json:"djid"`
+	Album           Album     `json:"album"`
+	Name            string    `json:"name"`
+	Id              int       `json:"id"`
+	astRank         int       `json:"lastRank"`
 }
 
 type Privilege struct {
@@ -86,7 +86,7 @@ func main() {
 		// 找出子标签为 a 的标签
 		for k, v := range j.SelByTag("a") {
 			for _, url := range *v.Attrs {
-				fmt.Println(int(k)+1, url, v.Value)
+				fmt.Println(int(k)+1, "https://music.163.com"+url, v.Value)
 			}
 		}
 	}
