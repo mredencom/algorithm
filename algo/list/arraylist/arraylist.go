@@ -36,7 +36,8 @@ func (list *List) Add(values ...interface{}) {
 	// 检查写是否需要增加slice 的长度
 	list.growBy(len(values))
 	for _, value := range values {
-		list.elements = append(list.elements, value)
+		//list.elements = append(list.elements, value)
+		list.elements[list.size] = value
 		list.size++
 	}
 }
@@ -165,6 +166,7 @@ func (list *List) String() string {
 	str += strings.Join(values, ", ")
 	return str
 }
+
 // 增加array list 长度
 func (list *List) growBy(n int) {
 	// 获取capacity 长度

@@ -83,7 +83,7 @@ func (tree *BinaryTree) PrintItem(subtree *Node) {
 	}
 }
 
-// 中间 有序遍历
+// 中序遍历
 func (tree *BinaryTree) InorderTraversal(subtree *Node, callback func(int)) {
 	if subtree.left != nil {
 		tree.InorderTraversal(subtree.left, callback)
