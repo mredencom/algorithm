@@ -122,6 +122,7 @@ func MergeSortedList(l1, l2 *LinkedList) *LinkedList {
 //	return l
 //}
 
+
 //删除倒数第N个节点
 func (this *LinkedList) DeleteBottomN(n int) {
 	slow, fast := this.head, this.head
