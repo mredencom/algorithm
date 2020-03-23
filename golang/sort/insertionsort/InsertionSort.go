@@ -21,3 +21,20 @@ func InsertionSort(a []int, n int) {
 		a[j+1] = current
 	}
 }
+
+// 插入排序的第二张实现方式 array 这是一个待排序的数组
+func InsertionSort2(array []int) {
+	// 首先我们要知道 如果是一维数组 长度为2的时候 就根本不需要排序
+	if len(array) < 2 {
+		return
+	}
+	for itemIndex, itemValue := range array {
+		// 当前面大于元素大于后面一个 就给前面的元素移动到后面上来的
+		// 这里的itemIndex大于1的
+		for itemIndex != 0 && array[itemIndex-1] > itemValue {
+			array[itemIndex] = array[itemIndex-1]
+			itemIndex -= 1
+		}
+		array[itemIndex] = itemValue
+	}
+}
